@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    color: rgb(10, 10, 10);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #8a8a8a;
+    border-radius: 8px;
+    
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  input {
+    background-color: rgba(33, 34, 34, 0.7);
+    color: #dedcdc;
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #8e8e8e;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: rgba(41, 44, 61, 0.7); /* 70% opacity */
+    color: #dedcdc;
+    border: 1px solid #8e8e8e;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    backdrop-filter: blur(10px); /* This will give the milky effect */
+}
+
+  .weatherInfo {
+    background-color: rgba(41, 44, 61, 0.3); /* 30% opacity */
+    border: 1px solid #8e8e8e;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .windInfo {
+    background-color: rgba(41, 44, 61, 0.3); /* 30% opacity */
+    border: 1px solid #8e8e8e;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+  
+  }
+  .foreCast {
+    background-color: rgba(41, 44, 61, 0.3); /* 30% opacity */
+    border: 1px solid #8e8e8e;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+  .weatherIcon {
+    background-color: rgba(41, 44, 61, 0.3); /* 30% opacity */
+    border: 1px solid #8e8e8e;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .clear {
+    background-image: url('/clear.jpg');
+    color: rgb(10, 10, 10);
+  }
+  
+  .cloudy {
+    background-image: url('/cloudy.jpg');
+    color: rgb(10, 10, 10);
+  }
+  
+ .rainy {
+    background-image: url('/rainy.jpg');
+    color: rgb(243, 241, 241);
+  }
+  
+ .snowy {
+    background-image: url('/snowy.jpg');
+    color: rgb(10, 10, 10);
+  }
+  
+  .default {
+    background-image: url('/default.avif');
+    color: rgb(243, 241, 241);
+  }
+
+  .stormy {
+    background-image: url('/stormy.jpg');
+    color: rgb(243, 241, 241);
+  }
+
+  .fogy {
+    background-image: url('/fogy.jpg');
+    color: rgb(10, 10, 10);
+  }
+
+
+  .smokey {
+    background-image: url('/smoke.jpg');
+    color: rgb(10, 10, 10);
+  }
+
+  .dizzle {
+    background-image: url('/fogy.jpg');
+    color: rgb(10, 10, 10);
+  }
+
+  .haze {
+    background-image: url('/fogy.jpg');
+    color: rgb(10, 10, 10);
+  }

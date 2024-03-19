@@ -1,0 +1,42 @@
+{
+  "name": "wetter-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node src/app/server.js",
+    "lint": "next lint",
+    "test": "snyk test",
+    "type": "module"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1579.0",
+    "axios": "^1.5.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.3",
+    "express-prom-bundle": "^7.0.0",
+    "fs": "^0.0.1-security",
+    "joi": "^17.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.1",
+    "next": "14.1.0",
+    "next-auth": "^4.24.7",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^4.11.0",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.4",
+    "postcss": "^8.4.31",
+    "snyk": "^1.1280.1",
+    "tailwindcss": "^3.3.3"
+  }
+}
