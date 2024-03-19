@@ -1,7 +1,7 @@
 provider "aws" {
   region     = var.aws_region   
-  access_key = var.access_key
-  secret_key = var.secret_key   
+  access_key = secrets.YOUR_ACCESS_KEY
+  secret_key = secrets.YOUR_SECRET_KEY   
 }
 resource "aws_security_group" "grafana_sg" {
   name        = "grafana_sg"
