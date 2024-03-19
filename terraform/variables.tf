@@ -53,13 +53,11 @@ variable instance_type_grafana {
 
 variable "access_key" {
   description = "AWS access key"
-  type        = string
-  default     = secrets.YOUR_AWS_ACCESS_KEY
+
 }
 variable "secret_key" {
   description = "AWS secret key"
-  type        = string
-  default     = secrets.YOUR_AWS_SECRET_KEY
+  
 } 
 
 
