@@ -42,4 +42,4 @@ next-env.d.ts
 terraform/.terraform/*
 .terraform.lock.hcl
 terraform.tfstate
-terraform.tfstate.backupDateiname
+terraform.tfstate.backup
