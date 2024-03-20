@@ -169,9 +169,9 @@ resource "aws_instance" "nextjs_app1" {
               sudo apt-get install -y nodejs
               sudo npm install -g npm@latest
               mkdir /home/ubuntu/Wetter_App
-              sudo chown -R $USER:$USER /home/ubuntu/Wetter_App
               git clone https://github.com/RaupeCHR/Wetter_App.git /home/ubuntu/Wetter_App
               cd /home/ubuntu/Wetter_App
+              sudo chown -R $USER:$USER /home/ubuntu/Wetter_App
               npm install
              
               EOF
