@@ -51,17 +51,17 @@ variable instance_type_grafana {
   default     = "t2.micro"
 }
 
-variable "access_key" {
-  description = "AWS access key"
+//variable "access_key" {
+  //description = "AWS access key"
   
 
-}
-variable "secret_key" {
-  description = "AWS secret key"
+//}
+//variable "secret_key" {
+  //description = "AWS secret key"
   
   
   
-} 
+//} 
 
 
 variable pem_key {
