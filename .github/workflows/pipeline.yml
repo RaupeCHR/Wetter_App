@@ -62,12 +62,7 @@ jobs:
         command: test
   deploy:
     needs: test
-    name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: production
-    defaults:
-      run:
-        shell: bash
 
     steps:
     - name: Configure aws credentials
