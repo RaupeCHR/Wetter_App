@@ -89,16 +89,17 @@ jobs:
 
     - name: Terraform Plan
       env:
-        TF_VAR_ACCESS_KEY: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        TF_VAR_SECRET_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
+        access_key: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
+        secret_key: ${{ secrets.YOUR_AWS_SECRET_KEY }}
+        aws-region: eu-central-1
       run: terraform plan -input=false
       working-directory: ./terraform
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       env:
-        TF_VAR_ACCESS_KEY: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        TF_VAR_SECRET_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
+        access_key: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
+        secret_key: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform apply -auto-approve -input=false
       working-directory: ./terraform
 
@@ -109,7 +110,7 @@ jobs:
     
     - name: Terraform Destroy
       env:
-        TF_VAR_ACCESS_KEY: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        TF_VAR_SECRET_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
+        access_key: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
+        secret_key: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform destroy -auto-approve
       working-directory: ./terraform 
