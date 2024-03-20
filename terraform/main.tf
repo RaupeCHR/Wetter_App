@@ -1,10 +1,10 @@
 provider "aws" {
   region     = var.aws_region   
-  access_key = secrets.YOUR_ACCESS_KEY
-  secret_key = secrets.YOUR_SECRET_KEY   
+  ACCESS_KEY = secrets.YOUR_ACCESS_KEY
+  SECRET_KEY = secrets.YOUR_SECRET_KEY   
 }
-resource "aws_security_group" "grafana_sg" {
-  name        = "grafana_sg"
+resource "aws_security_group" "grafana_sg1" {
+  name        = "grafana_sg1"
   description = "Security Group for the Grafana instance"
 
   ingress {
@@ -33,11 +33,11 @@ resource "aws_security_group" "grafana_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-resource "aws_instance" "grafana" {
+resource "aws_instance" "grafana1" {
   ami           = var.instance_ami_grafana # Ubuntu 20.04 LTS
   instance_type = var.instance_type_grafana
   key_name      = var.pem_key
-  vpc_security_group_ids = [aws_security_group.grafana_sg.id]
+  vpc_security_group_ids = [aws_security_group.grafana_sg1.id]
 
   user_data = <<-EOF
               #!/bin/bash
@@ -57,8 +57,8 @@ resource "aws_instance" "grafana" {
     Name = "Grafana"
   }
 }
-resource "aws_security_group" "nextjs_app_sg" {
-  name        = "nextjs_app_sg"
+resource "aws_security_group" "nextjs_app_sg1" {
+  name        = "nextjs_app_sg1"
   description = "Security Group for the Next.js app instance"
 
   ingress {
@@ -97,11 +97,11 @@ resource "aws_security_group" "nextjs_app_sg" {
   }
 }
 
-resource "aws_instance" "nextjs_app" {
+resource "aws_instance" "nextjs_app1" {
   ami           = var.instance_ami_app # Ubuntu 20.04 LTS
   instance_type = var.instance_type_app
   key_name      = var.pem_key
-  vpc_security_group_ids = [aws_security_group.nextjs_app_sg.id]
+  vpc_security_group_ids = [aws_security_group.nextjs_app_sg1.id]
 
   user_data = <<-EOF
               #!/bin/bash
