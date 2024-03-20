@@ -97,7 +97,9 @@ jobs:
         access_key: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
         secret_key: ${{ secrets.YOUR_AWS_SECRET_KEY }}
         aws-region: eu-central-1
-      run: terraform plan -input=false
+      run: |
+        terraform init
+        terraform plan -input=false
       working-directory: ./terraform
 
     - name: Terraform Apply
