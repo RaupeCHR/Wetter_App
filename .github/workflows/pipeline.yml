@@ -87,6 +87,11 @@ jobs:
       run: terraform fmt
       working-directory: ./terraform
 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.4.6
+
     - name: Terraform Plan
       env:
         access_key: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
