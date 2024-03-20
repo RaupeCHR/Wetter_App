@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -58,36 +62,40 @@ jobs:
         command: test
   deploy:
     needs: test
+    name: 'Terraform'
     runs-on: ubuntu-latest
+    environment: production
+    defaults:
+      run:
+        shell: bash
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::12345678:role/github_action_readonly
+        aws-region: eu-west-1
+
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.0.0
+        terraform_version: 1.4.6
 
     - name: Terraform Init
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform init
-      working-directory: ./terraform
+
+    - name: Terraform Format
+      run: terraform fmt -check
 
     - name: Terraform Plan
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
-      run: terraform plan
-      working-directory: ./terraform
+      run: terraform plan -input=false
 
     - name: Terraform Apply
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
-      run: terraform apply -auto-approve
-      working-directory: ./terraform
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply -auto-approve -input=false
 
     
     - name: Deploy to production
@@ -95,8 +103,5 @@ jobs:
         echo "Deploying to production"
     
     - name: Terraform Destroy
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform destroy -auto-approve
       working-directory: ./terraform 
