@@ -88,11 +88,17 @@ jobs:
       working-directory: ./terraform
 
     - name: Terraform Plan
+      env:
+        TF_VAR_ACCESS_KEY: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
+        TF_VAR_SECRET_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform plan -input=false
       working-directory: ./terraform
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      env:
+        TF_VAR_ACCESS_KEY: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
+        TF_VAR_SECRET_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform apply -auto-approve -input=false
       working-directory: ./terraform
 
@@ -102,5 +108,8 @@ jobs:
         echo "Deploying to production"
     
     - name: Terraform Destroy
+      env:
+        TF_VAR_ACCESS_KEY: ${{ secrets.YOUR_AWS_ACCESS_KEY }}
+        TF_VAR_SECRET_KEY: ${{ secrets.YOUR_AWS_SECRET_KEY }}
       run: terraform destroy -auto-approve
       working-directory: ./terraform 
